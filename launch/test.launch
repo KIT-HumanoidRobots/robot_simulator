@@ -1,0 +1,11 @@
+<launch>
+
+  <arg name="model" default="$(find robot_simulator)/model/humanoid.urdf"/>
+  <arg name="gui" default="False"/>
+  <param name="robot_description" textfile="$(arg model)" />
+  <param name="use_gui" value="$(arg gui)"/>
+  <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher"/>
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher"/>
+
+  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find robot_simulator)/rviz/robot_initial.rviz" required="true"/>
+</launch>
